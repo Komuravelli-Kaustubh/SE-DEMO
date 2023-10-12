@@ -1,0 +1,53 @@
+Java code:
+import java.util.*;
+import java.io.*;
+
+class Main{
+   
+    
+    public static void main(String[] args)
+    {
+        //  public:
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter 2 strings: ");
+        String first,second;
+        first=sc.next();
+        second=sc.next();
+        
+        char[] firstString=first.toCharArray();
+        char[] secondString=second.toCharArray();
+        
+        Arrays.sort(firstString);
+        Arrays.sort(secondString);
+        
+        if(Arrays.equals(firstString,secondString))
+        {
+            System.out.print("yes");
+        }
+        else{
+            System.out.println("No");
+        }
+        
+    }
+}
+
+Cpp code:
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    string first,second;
+    
+    cout<<"Enter 2 strings"<<endl;
+    cin>>first>>second;
+    
+    sort(first.begin(),first.end());
+    sort(second.begin(),second.end());
+    
+    cout<<(first==second);
+}

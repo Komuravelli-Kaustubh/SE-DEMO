@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <unordered_set>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int> ladoos;
+    for(int i=0;i<n;i++)
+    {
+        int z;
+        cin>>z;
+        ladoos.push_back(z);
+    }
+    int thresh1=n/2;
+    
+    unordered_set<int> unique;
+    
+    for(int x : ladoos){
+        unique.insert(x);
+        
+    }
+    
+    int thresh2=unique.size();
+    
+    if(thresh2<thresh1){
+        cout<<thresh2;
+    }
+    else{
+        cout<<thresh1;
+    }
+}

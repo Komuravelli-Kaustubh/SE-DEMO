@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+
+using namespace std;
+
+void solve(int n, vector<int>& store, unordered_set<int>& myset, int idx) {
+    if (idx == n) {
+        return; 
+    }
+
+    if (idx == 0) {
+        store[idx] = 0;
+        myset.insert(0);
+    } else {
+        if (store[idx - 1] - idx > 0 && myset.find(store[idx - 1] - idx) == myset.end()) {
+            store[idx] = store[idx - 1] - idx;
+        } else {
+            store[idx] = store[idx - 1] + idx;
+        }
+
+        myset.insert(store[idx]);
+    }
+
+    solve(n, store, myset, idx + 1);  
+}
+
+int main() {
+    int N;
+    cin >> N;
+    vector<int> store(N, 0);
+    unordered_set<int> myset;
+
+    solve(N, store, myset, 0);
+
+    for (int x : store) {
+        cout << x << " ";
+    }
+
+    return 0;
+}

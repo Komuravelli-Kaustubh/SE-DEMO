@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <sstream>
+
+using namespace std;
+
+void invoke(vector<int>& store) {
+    int n = store.size();
+    sort(store.begin(), store.end());
+
+    if (store[n - 1] == store[n - 2]) {
+        store.pop_back();
+        store.pop_back();
+    }
+
+    if (store[n - 1] != store[n - 2]) {
+        store[n - 2] = store[n - 1] - store[n - 2];
+        store.pop_back();
+    }
+}
+
+int main() {
+    string input;
+    getline(cin, input);
+
+    // Using stringstream to read integers from the input string
+    stringstream ss(input);
+    
+    int x;
+    vector<int> store;
+
+    // Reading integers from the stringstream
+    while (ss >> x) {
+        store.push_back(x);
+    }
+
+    while (store.size() > 1) {
+        invoke(store);
+    }
+
+    if (!store.empty()) {
+        cout << store[0] << " ";
+    } else {
+        cout << "0 ";
+    }
+
+    return 0;
+}

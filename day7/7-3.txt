@@ -1,0 +1,35 @@
+#include <bitset>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+// #include <bits/stdc++.h>
+
+using namespace std;
+
+void reverse(int &num,int &res){
+    if(num==0){
+        // cout<<res;
+        return ;
+    }    
+    
+    else{
+        int lastd=num&1;
+        int bit=(lastd)==0?1:0;
+        num=num>>1;
+        reverse(num,res);
+        res=res|bit;
+        res=res<<1;
+    }
+}
+
+
+int main()
+{
+    int n;
+    cin>>n;
+    int res=0;
+    reverse(n,res);
+    res=res>>1;
+    cout<<res;
+    // cout<<n;
+}

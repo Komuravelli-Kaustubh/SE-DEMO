@@ -1,0 +1,54 @@
+//def backspace(s):
+//    store = []
+//    
+//    for char in s:
+//        if char == '$' and store:
+//            store.pop()
+//        elif char != '$':
+//            store.append(char)
+//    
+//    return "".join(store[::-1])
+//
+//
+//s1 = input()
+//s2 = input()
+//    
+//r1 = backspace(s1)
+//r2 = backspace(s2)
+//    
+//if r1 == r2:
+//    print("true")
+//else:
+//    print("false")
+
+
+
+n=int(input())
+l1=[]
+input_str=input()
+elements=input_str.split()
+
+l1=[int(x) for x in elements]
+    
+l2=l1.copy()
+
+l2.sort(reverse=True)
+
+l3=[0]*n
+
+for i in l1:
+    index1=l1.index(i)
+    if i in l2:
+        index2=l2.index(i)
+        l3[index1]=index2+1
+        
+for i in l3:
+    if i==1:
+        print("Champion",end=" ")
+    elif i==2:
+        print("RunnerUp-1",end=" ")
+    elif i==3:
+        print("RunnerUp-2",end=" ")
+    else:
+        print(i,end=" ")
+    

@@ -1,0 +1,30 @@
+
+s=input().split()
+word1=s[0]
+word2=s[-1]
+
+dict1={}
+dict2={}
+
+l1=len(word1)
+l2=len(word2)
+
+for i in range(l1):
+    char=word1[i]
+    if char in dict1:
+        dict1[char]+=1
+    else:
+        dict1[char]=1
+        
+for i in range(l2):
+    char1=word2[i]
+    if char1 in dict2:
+        dict2[char1]+=1
+    else:
+        dict2[char1]=1
+        
+        
+if (dict1==dict2):
+    print("true")
+else:
+    print("false")

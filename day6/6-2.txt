@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+
+// Node class for reference
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int data) {
+        this->data = data;
+        this->next = nullptr;
+    }
+};
+
+class Solution {
+public:
+    bool isPalindrome(Node* head) {
+        // Implement your logic here.
+        std::vector<int> store;
+        Node* curr = head;
+        while (curr != nullptr) {
+            store.push_back(curr->data);
+            curr = curr->next;
+        }
+
+        int n = store.size();
+
+        int left = 0;
+        int right = n - 1;
+
+        while (left <= right) {
+            if (store[left] != store[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+};
+
+int main() {
+    // You can create and test your linked list here if needed
+    return 0;
+}

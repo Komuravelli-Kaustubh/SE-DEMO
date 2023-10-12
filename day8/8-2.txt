@@ -1,0 +1,31 @@
+#include <iostream>
+#include <unordered_map>
+
+using namespace std;
+
+void count(long long n, unordered_map<int, int>& freq) {
+    if (n == 0) {
+        return;
+    } else {
+        int lastd = n % 10;
+        freq[lastd]++;
+
+        count(n / 10, freq);
+    }
+}
+
+int main() {
+    long long N;
+    cin >> N;
+    unordered_map<int, int> freq;
+
+    
+    count(N, freq);
+
+    
+    for (int i = 0; i <= 9; i++) {
+        cout << i << ":" << freq[i] << endl;
+    }
+
+    return 0;
+}

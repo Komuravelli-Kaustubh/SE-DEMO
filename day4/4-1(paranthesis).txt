@@ -1,0 +1,21 @@
+def remove_outer_parentheses(S):
+    stack = []
+    result = []
+
+    for char in S:
+        if char == '(':
+            stack.append(char)
+            if len(stack) > 1:  # Add '(' to the result only if it's not the outermost '('
+                result.append(char)
+        else:
+            stack.pop()
+            if len(stack) > 0:  # Add ')' to the result only if it's not the outermost ')'
+                result.append(char)
+
+    return ''.join(result)
+
+# Reading input
+S = input().strip()
+
+# Output result
+print(remove_outer_parentheses(S))

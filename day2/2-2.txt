@@ -1,0 +1,45 @@
+import java.io.*;
+import java.util.*;
+
+
+class prob2{
+    public static void main(String[] args)
+    {
+        // int n;
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr =new int[n];
+        for(int i=0;i<n;i++)
+        {
+            int x=sc.nextInt();
+            arr[i]=x;
+        }
+        
+        int thresh1=n/2;
+        
+        Map<Integer,Integer> hm = new HashMap<>();
+        
+        for(int ele : arr)
+        {
+            int temp=ele;
+            if(hm.containsKey(temp))
+            {
+                hm.put(temp,hm.get(temp)+1);
+            }
+            else{
+                hm.put(temp,1);
+            }
+        }
+        
+        int thresh2=hm.size();
+        
+        if(thresh2<=thresh1)
+        {
+            System.out.println(thresh2);
+        }
+        else
+        {
+            System.out.println(thresh1);
+        }
+    }
+}

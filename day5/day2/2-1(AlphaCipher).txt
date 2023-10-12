@@ -1,0 +1,18 @@
+a=input()
+b=a.split()
+l=len(b[0])
+ll=len(b[1])
+c=1
+if(l!=ll):
+    c=0
+else:
+    sa=sorted(list(b[0]))
+    sb=sorted(list(b[1]))
+    for i in range(l):
+        if(sa[i]!=sb[i]):
+            c=0
+if(c==1):
+    print("true")
+else:
+    print("false")
+    

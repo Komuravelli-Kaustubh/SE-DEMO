@@ -1,0 +1,50 @@
+#include <iostream>
+#include <stack>
+#include <string>
+
+using namespace std;
+
+int calPoints(string operations) {
+    stack<int> scores;
+
+    for (char op : operations) {
+        if (isdigit(op)) {
+            scores.push(op - '0');
+        } else if (op == 'C') {
+            if (!scores.empty()) {
+                scores.pop();
+            }
+        } else if (op == 'D') {
+            if (!scores.empty()) {
+                int prev = scores.top();
+                scores.push(2 * prev);
+            }
+        } else if (op == '+') {
+            if (scores.size() >= 2) {
+                int last = scores.top();
+                scores.pop();
+                int secondLast = scores.top();
+                scores.push(last);
+                scores.push(last + secondLast);
+            }
+        }
+    }
+
+    int totalSum = 0;
+    while (!scores.empty()) {
+        totalSum += scores.top();
+        scores.pop();
+    }
+
+    return totalSum;
+}
+
+int main() {
+    string operations;
+    cin >> operations;
+
+    int result = calPoints(operations);
+    cout << result << endl;
+
+    return 0;
+}

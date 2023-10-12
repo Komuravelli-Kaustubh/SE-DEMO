@@ -1,0 +1,76 @@
+CPP code:
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <stack>
+
+using namespace std;
+
+int main()
+{
+    string s;
+    cin>>s;
+    
+    stack<char> myStack;
+    
+    for(char c: s)
+    {
+        if(c=='$' && myStack.size()>0)
+        {
+            myStack.pop();
+        }
+        else{
+            if(c!='$')
+            myStack.push(c);
+        }
+    }
+    
+    string res="";
+    
+    while(myStack.size()!=0)
+    {
+        char c=myStack.top();
+        res+=c;
+        myStack.pop();
+    }
+    
+    reverse(res.begin(),res.end());
+    
+    cout<<res<<" ";
+}
+
+
+Java code:
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.next();
+
+        Stack<Character> myStack = new Stack<>();
+
+        for (char c : s.toCharArray()) {
+            if (c == '$' && !myStack.isEmpty()) {
+                myStack.pop();
+            } else {
+                if (c != '$') {
+                    myStack.push(c);
+                }
+            }
+        }
+
+        StringBuilder res = new StringBuilder();
+
+        while (!myStack.isEmpty()) {
+            char c = myStack.pop();
+            res.append(c);
+        }
+
+        System.out.println(res.reverse().toString());
+    }
+}
+

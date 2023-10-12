@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int m, n;
+    cin >> m >> n;
+
+    vector<int> list1(m);
+    vector<int> list2(n);
+    vector<int> result;
+
+    // Reading voltages for list1
+    for (int i = 0; i < m; ++i) {
+        cin >> list1[i];
+    }
+
+    // Reading voltages for list2
+    for (int i = 0; i < n; ++i) {
+        cin >> list2[i];
+    }
+
+    // Merging the lists into a single sorted list
+    int i = 0, j = 0;
+    while (i < m && j < n) {
+        if (list1[i] < list2[j]) {
+            result.push_back(list1[i]);
+            i++;
+        } else {
+            result.push_back(list2[j]);
+            j++;
+        }
+    }
+
+    // Handling remaining elements in list1
+    while (i < m) {
+        result.push_back(list1[i]);
+        i++;
+    }
+
+    // Handling remaining elements in list2
+    while (j < n) {
+        result.push_back(list2[j]);
+        j++;
+    }
+
+    // Output the sorted merged list
+    for (int voltage : result) {
+        cout << voltage << " ";
+    }
+
+    return 0;
+}

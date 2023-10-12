@@ -1,0 +1,46 @@
+#include <iostream>
+
+// Node class for reference
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int data) {
+        this->data = data;
+        this->next = nullptr;
+    }
+};
+
+class Solution {
+public:
+    Node* mergeTwoLists(Node* l1, Node* l2) {
+        Node* dummy = new Node(0);
+        Node* curr = dummy;
+
+        while (l1 != nullptr && l2 != nullptr) {
+            if (l1->data < l2->data) {
+                curr->next = l1;
+                l1 = l1->next;
+            } else {
+                curr->next = l2;
+                l2 = l2->next;
+            }
+
+            curr = curr->next;
+        }
+
+        if (l1 != nullptr) {
+            curr->next = l1;
+        } else {
+            curr->next = l2;
+        }
+
+        return dummy->next;
+    }
+};
+
+int main() {
+    // You can create and test your linked lists here if needed
+    return 0;
+}

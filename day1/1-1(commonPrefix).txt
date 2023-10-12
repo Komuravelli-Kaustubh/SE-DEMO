@@ -1,0 +1,22 @@
+def min_substring(words):
+    words.sort()
+    
+    n=len(words[0])
+    temp=""
+    
+    for i in range(n):
+        if(words[0][i]==words[-1][i]):
+            temp+=words[0][i];
+        else:
+            break
+            
+        
+    return temp
+
+
+
+words=input().split()
+
+common_prefix=min_substring(words)
+
+print(common_prefix)

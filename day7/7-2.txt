@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+// #include <bits/stdc++.h>
+
+using namespace std;
+
+int bitcount(int n1,int n2){
+    if(n1==0 && n2==0){
+        return 0;
+    }
+    else{
+        int lastn1=n1&1;
+        int lastn2=n2&1;
+        
+        int count=bitcount(n1>>1,n2>>1);
+        if(lastn1!=lastn2){
+            count++;
+        }
+        
+        return count;
+    }
+}
+
+int main(){
+    int n1,n2;
+    cin>>n1>>n2;
+    
+    int res=bitcount(n1,n2);
+    cout<<res;
+}
